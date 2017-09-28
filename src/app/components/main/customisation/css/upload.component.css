@@ -1,0 +1,32 @@
+.img {
+    width: 250px;
+    height: 250px;    
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-position: center;
+}
+.modal-img {
+    width: 100%;
+}
+.img-wrap {
+    display: inline-block;
+    text-align: center;
+    margin: 15px;
+    margin-bottom: 30px;
+    position: relative;   
+}
+
+.btn-img {    
+    position: absolute;
+    bottom: 0px;         
+    width: 50%; 
+}
+.btn-primary {
+    left: 0px;
+}
+.btn-danger {
+    right: 0px;
+}
+.deleteItem {
+    display: none!important;
+}

@@ -1,0 +1,19 @@
+<hr >
+<div *ngFor="let album of albums" >
+<div *ngIf="!album.delete"  class="card" style="width: 20rem;" [ngClass]="{deleteItem: album.show}">
+        
+        <!-- <img class="card-img-top"     [src]="album.base64" alt="Card image cap"> -->
+        <!-- <img class="card-img-top" *ngIf="!album.show" src="http://via.placeholder.com/318x180" alt="Card image cap"> -->
+       
+        <div class="card-block">
+          <h4 class="card-title">{{album.titles}}</h4>
+          <p class="card-text">{{album.descriptions}}</p>          
+          <button class="btn btn-primary" (click)="album.show = !album.show">Show Photo</button>
+          <button class="btn btn-danger" (click)="album.delete = !album.delete">Delete</button>
+        </div>      
+</div>
+<div class="jumbotron"  [ngClass]="{deleteItem: !album.show}">    
+    <fa name="times" aria-hidden="true" (click)="album.show = !album.show"></fa>
+    <upload-comp></upload-comp>
+</div>
+</div>

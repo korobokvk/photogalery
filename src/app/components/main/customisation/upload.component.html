@@ -1,0 +1,21 @@
+<div class="container" >
+    <div class="form-group">
+        <input accept="image/*" type='file' class="form-control-file" (change)="readUrl($event)" aria-describedby="fileHelp">
+        <small id="fileHelp" class="form-text text-muted">Upload any picture</small>
+    </div>
+
+    <div class="img-wrap" *ngFor="let urls of url" [ngClass]="{deleteItem: urls.display}">
+        <div class="img" #img [ngStyle]="{'background-image': urls.get}" (click)="open(content)"></div>
+        <ng-template #content let-c="close" let-d="dismiss">
+                <div class="modal-content img modal-img" [ngStyle]="{'background-image': urls.get}"></div>                
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>                    
+                </div>
+        </ng-template>
+
+        <!-- <button class="btn btn-primary btn-img">Set as cover</button> -->
+        <button class="del-btn btn btn-danger btn-img" (click)="urls.display = !urls.display">DELETE</button>    
+        
+    </div>
+</div>
+

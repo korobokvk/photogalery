@@ -1,0 +1,17 @@
+fa {
+    font-size: 2em;
+    position: absolute;
+    right: 20px;
+    top: 5px;
+}
+.jumbotron {
+    position: relative;
+    top: 50px;
+}
+.deleteItem {
+    display: none;
+}
+.card-img-top {
+    width: 318px;
+    height: 180px;
+}
