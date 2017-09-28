@@ -1,5 +1,13 @@
 # PhotoApp
 
+##What I can do with this? 
+
+You can create albums
+You can set an albums cover, name, description
+You can upload some pictures in album
+If you do not set albums name, description and cover, it is will be set automaticly 
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.1.
 
 ## Development server
