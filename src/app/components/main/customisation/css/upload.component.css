@@ -6,7 +6,13 @@
     background-position: center;
 }
 .modal-img {
+    min-width: 350px;
+    min-height: 350px;  
     width: 100%;
+    -webkit-background-size: contain;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat
 }
 .img-wrap {
     display: inline-block;

@@ -1,19 +1,56 @@
-<hr >
-<div *ngFor="let album of albums" >
-<div *ngIf="!album.delete"  class="card" style="width: 20rem;" [ngClass]="{deleteItem: album.show}">
+<div class="container">
+    <ng-template #content let-c="close" let-d="dismiss">
+            <div class="modal-header">
+                <h4 class="modal-title">Add album</h4>
+                <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <input type="text"  [(ngModel)]="title" #titles class="form-control" placeholder="Enter album title" ng-reflect-model="">
+                    <textarea  [(ngModel)]="textarea" #textareas class="form-control" cols="30" rows="5" placeholder="Enter album description"></textarea>
+            
+                    <input accept="image/*" type='file' class="form-control-file" (change)="coverage($event)" aria-describedby="fileHelp">
+                    <small id="fileHelp" class="form-text text-muted">Album cover</small>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
+                <button class="btn btn-primary" (click)="addAlbum(title, textarea); title = ''; textarea = ''; c('Close click')">Add album</button>
+            </div>
+    </ng-template>            
+              
+              
+
+    <h1>Photo galery</h1>
+    <h5 class="alert alert-info">Press button to add new album</h5>
+    <button class="btn btn-primary" (click)="open(content)">Press me!</button>
+    <hr >
+    
+    <div class="cover-albums">
+    <div *ngFor="let album of albums" class="cards">
+        <div *ngIf="!album.delete"  class="card" style="width: 20rem;" >
+                
+                  <img class="card-img-top" *ngIf="album.cover" [src]="album.cover" >
+                  <img class="card-img-top" *ngIf="!album.cover" src="http://via.placeholder.com/318x180" >
+                
+                <div class="card-block">
+                  <h4 class="card-title" *ngIf="album.titles">{{album.titles}}</h4>
+                  <h4 class="card-title" *ngIf="!album.titles">Album titles</h4>
+
+                  <p class="card-text" *ngIf="album.descriptions">{{album.descriptions}}</p>                  
+                  <p class="card-text" *ngIf="!album.descriptions">Album descriptions</p>       
+                  <button class="btn btn-primary" (click)="album.show = !album.show">Show Photo</button>
+                  <button class="btn btn-danger" (click)="album.delete = !album.delete">Delete</button>
+                </div>      
+        </div>
         
-        <!-- <img class="card-img-top"     [src]="album.base64" alt="Card image cap"> -->
-        <!-- <img class="card-img-top" *ngIf="!album.show" src="http://via.placeholder.com/318x180" alt="Card image cap"> -->
-       
-        <div class="card-block">
-          <h4 class="card-title">{{album.titles}}</h4>
-          <p class="card-text">{{album.descriptions}}</p>          
-          <button class="btn btn-primary" (click)="album.show = !album.show">Show Photo</button>
-          <button class="btn btn-danger" (click)="album.delete = !album.delete">Delete</button>
-        </div>      
+        <div class="jumbotron"  [ngClass]="{deleteItem: !album.show}">    
+            <fa name="times" aria-hidden="true" (click)="album.show = !album.show" ></fa>
+            <upload-comp></upload-comp>
+        </div>
+    </div>
+    </div>
 </div>
-<div class="jumbotron"  [ngClass]="{deleteItem: !album.show}">    
-    <fa name="times" aria-hidden="true" (click)="album.show = !album.show"></fa>
-    <upload-comp></upload-comp>
-</div>
-</div>
+

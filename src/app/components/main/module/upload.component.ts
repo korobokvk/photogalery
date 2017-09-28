@@ -32,6 +32,6 @@ export class UploadComponent {
   open(content) {
     this.modalService.open(content)
   }
-
+  
 
 }

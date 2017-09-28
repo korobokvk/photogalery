@@ -2,10 +2,7 @@ import { Injectable } from '@angular/core'
 
 @Injectable()
 export class UploadService {
-/**
- * Array of images
- */
-url:any[] = [];
+
 
 /**
  * Catch images from upload component and render it
